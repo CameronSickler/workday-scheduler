@@ -8,6 +8,12 @@
 // var timeMethod = moment().format('MMMM Do YYYY, h:mm:ss a');
 
 
+//practice code above
+
+
+
+
+
 
 // moment.js time function and id for HTML
 var time = moment().format("MMM Do YY");
