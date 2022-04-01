@@ -4,5 +4,11 @@
 //     $(this).text(hoursList)
 // })
 
-var timeEl = $("#time")
-var timeMethod = moment().format('MMMM Do YYYY, h:mm:ss a');
+// var timeEl = $("#time")
+// var timeMethod = moment().format('MMMM Do YYYY, h:mm:ss a');
+
+
+
+// moment.js time function and id for HTML
+var time = moment().format("MMM Do YY");
+$("#currentDay").html(time);
