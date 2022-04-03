@@ -1,25 +1,16 @@
-// var hoursList = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"];
-
-// $('.hour').each(function () {
-//     $(this).text(hoursList)
-// })
-
-// var timeEl = $("#time")
-// var timeMethod = moment().format('MMMM Do YYYY, h:mm:ss a');
-
-
-//practice code above
-
-
-
-
 
 
 // moment.js time function and id for HTML
-var time = moment().format("MMM Do YY");
-$("#currentDay").html(time);
+var momentTimeDate = moment().format("MMM Do YY");
+$("#currentDay").html(momentTimeDate);
 
 // add event listener code using JQuery for saveBtn click
+$(document).on("click", function () {
+    var task = $(this).val("description");
+    console.log(task);
+    var time = $(this).val("time");
+    console.log(time);
+})
 
 //save local storage saves. Need to create vars that save data to send to local storage.
 
