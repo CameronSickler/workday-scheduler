@@ -14,7 +14,7 @@ $(".saveBtn").on("click", function () {
     console.log(time);
 
     //localStorage moved within the click function to save on click within scope.
-    localStorage.setItem(task, time);
+    localStorage.setItem(time, task);
 })
 
 //Need a function loop? that checks the timeblock IDs for time and changes styles accordingly. Idk
@@ -23,14 +23,19 @@ function timeMonitor() {
 
     var setMonitorTimeNow = moment().hour();
 
+
+
     // i need to check the moment.js time when this runs and then loop over the timeblocks to 
     //update their styles depending on what time it is.
 
     $(".time-block").each(function () {
         // save the id attributes returned as an array of values to a variable
         var timeBlockChecker = ($(this).attr("id").split("hour")[1]);
+        var currentHour = $(this).attr("id");
+        $("#" + currentHour + " .description").val(localStorage.getItem(currentHour));
         console.log(timeBlockChecker);
         console.log(setMonitorTimeNow);
+        console.log(currentHour);
 
         if (setMonitorTimeNow < timeBlockChecker) {
             console.log("There is still time to finish this task");
@@ -47,7 +52,5 @@ function timeMonitor() {
 }
 
 
-$("#hour9.description").val(localStorage.getItem("hour9"));
-//need to get all information from local storage on refresh/page load
-
 timeMonitor();
+
