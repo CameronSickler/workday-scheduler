@@ -6,15 +6,15 @@ $("#currentDay").html(momentTimeDate);
 
 // add event listener code using JQuery for saveBtn click
 $(document).on("click", function () {
-    var task = $(this).val("description");
+    //saves the current element description as var task
+    var task = $(this).siblings(".description").val();
     console.log(task);
-    var time = $(this).val("time");
+    var time = $(this).parent().attr("id");
     console.log(time);
+
+    //localStorage moved within the click function to save on click within scope.
+    localStorage.setItem(task, time);
 })
-
-//save local storage saves. Need to create vars that save data to send to local storage.
-
-localStorage.setItem(task, time);
 
 //Need a function loop? that checks the timeblock IDs for time and changes styles accordingly. Idk
 
