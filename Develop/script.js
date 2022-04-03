@@ -17,40 +17,34 @@ $(".saveBtn").on("click", function () {
     localStorage.setItem(time, task);
 })
 
-//Need a function loop? that checks the timeblock IDs for time and changes styles accordingly. Idk
+
+// function to compare current time with workday schedule time blocks and also pulls
+// local storage values to populate the browser on page refresh/load
 
 function timeMonitor() {
 
     var setMonitorTimeNow = moment().hour();
 
 
-
-    // i need to check the moment.js time when this runs and then loop over the timeblocks to 
-    //update their styles depending on what time it is.
-
     $(".time-block").each(function () {
         // save the id attributes returned as an array of values to a variable
         var timeBlockChecker = ($(this).attr("id").split("hour")[1]);
+        // save time block ids as a variable
         var currentHour = $(this).attr("id");
+        // get values from local storage and populate the textareas
         $("#" + currentHour + " .description").val(localStorage.getItem(currentHour));
-        console.log(timeBlockChecker);
-        console.log(setMonitorTimeNow);
-        console.log(currentHour);
 
+        // compare current time to timeblock and change class accordingly
         if (setMonitorTimeNow < timeBlockChecker) {
-            console.log("There is still time to finish this task");
             $(this).addClass("future");
         } else if (setMonitorTimeNow == timeBlockChecker) {
-            console.log("This task must be completed now");
             $(this).addClass("present");
         } else {
-            console.log("This task is overdue today");
             $(this).addClass("past");
         }
-        console.log("===");
     })
 }
 
-
+//function call to start logic
 timeMonitor();
 
